@@ -113,8 +113,8 @@ defmodule MaruSwagger.ParamsExtractor do
   def extract_params(%Route{parameters: param_list, path: path}) do
     param_list = filter_information(param_list)
     (case judge_adapter(param_list) do
-      :body      -> NonGetBodyParamsGenerator
-      :form_data -> NonGetFormDataParamsGenerator
+      _      -> NonGetBodyParamsGenerator
+      # :form_data -> NonGetFormDataParamsGenerator
     end).generate(param_list, path)
   end
 
